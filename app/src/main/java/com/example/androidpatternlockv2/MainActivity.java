@@ -38,10 +38,16 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
     @Override
     public void onComplete(List<PatternLockView.Dot> pattern) {
 
-        if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("0125"));
+        if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("0125")) {
 
-        patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
-        Toast.makeText(this, "Pattern is correct!", Toast.LENGTH_SHORT).show();
+            patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
+            Toast.makeText(this, "Pattern is correct!", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+            patternLockView.setViewMode(PatternLockView.PatternViewMode.WRONG);
+            Toast.makeText(this, "Pattern is not correct!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
