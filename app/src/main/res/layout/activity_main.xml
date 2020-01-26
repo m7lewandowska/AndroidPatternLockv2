@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <DigitalClock
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="50dp"
         android:textSize="60sp"
         android:textAlignment="center"
@@ -18,6 +20,7 @@
 
     <TextView
         android:id="@+id/txt_patternDraw"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -31,8 +34,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.andrognito.patternlockview.PatternLockView
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:id="@+id/pattern_lock_view"
+        android:layout_width="330dp"
+        android:layout_height="350dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         />
