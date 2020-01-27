@@ -77,19 +77,29 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
         }
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()==7) {
-
-
+            if(ChechForM(ptrn)==true){
+                points++;
+            }
+            else if(ChechForC(ptrn)==true)
+            {
+                points++;
+            }
+            else if(ChechForN(ptrn)==true){
+                points++;
+            }
         }
 
-
-        // M PATTERN
-        else if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("6304258")) {
-//
-            patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
-            Toast.makeText(this, "Pattern is correct!", Toast.LENGTH_SHORT).show();
+        if(PatternLockUtils.patternToString(patternLockView, pattern).length()==9) {
+            if(ChechForS(ptrn)==true){
+                points++;
+            }
         }
 
-
+        if(PatternLockUtils.patternToString(patternLockView, pattern).length()==5) {
+            if(ChechForL(ptrn)==true){
+                points++;
+            }
+        }
 
 
     }
@@ -117,4 +127,14 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
         }
         return letter;
     }
-}
+
+    public boolean ChechForC(String ptrn){
+        boolean letter = false;
+        if(ptrn.equalsIgnoreCase("2103678"))
+        {
+            letter = true;
+        }
+        return letter;
+    }
+
+    }
