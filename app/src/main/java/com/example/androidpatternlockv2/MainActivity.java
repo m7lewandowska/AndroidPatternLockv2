@@ -137,4 +137,14 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
         return letter;
     }
 
+    public boolean ChechForN(String ptrn){
+        boolean letter = false;
+        if(ptrn.equalsIgnoreCase("6304852"))
+        {
+            letter = true;
+        }
+        return letter;
     }
+
+   
+}
