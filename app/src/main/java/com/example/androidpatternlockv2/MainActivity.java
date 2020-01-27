@@ -38,21 +38,53 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
     @Override
     public void onComplete(List<PatternLockView.Dot> pattern) {
 
-        if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("0125")) {
+//        if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("0125")) {
+//
+//            patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
+//            Toast.makeText(this, "Pattern is correct!", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        else {
+//            patternLockView.setViewMode(PatternLockView.PatternViewMode.WRONG);
+//            Toast.makeText(this, "Pattern is not correct!", Toast.LENGTH_SHORT).show();
+//        }
+        String ptrn = PatternLockUtils.patternToString(patternLockView, pattern);
+        int points = 0;
+        StartsInCorner(ptrn);
 
+        if(PatternLockUtils.patternToString(patternLockView, pattern).length()<2)
+        {
+            Toast.makeText(this, "Pattern is too short!", Toast.LENGTH_SHORT).show();
+        }
+
+        if(PatternLockUtils.patternToString(patternLockView, pattern).length()!=3 && PatternLockUtils.patternToString(patternLockView, pattern).length()!=4)
+        {
+            Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+        }
+
+        else if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("6304258")) {
+//
             patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
             Toast.makeText(this, "Pattern is correct!", Toast.LENGTH_SHORT).show();
         }
 
-        else {
-            patternLockView.setViewMode(PatternLockView.PatternViewMode.WRONG);
-            Toast.makeText(this, "Pattern is not correct!", Toast.LENGTH_SHORT).show();
-        }
+
+
 
     }
 
     @Override
     public void onCleared() {
 
+    }
+
+    public boolean StartsInCorner(String ptrn){
+        boolean startsInCorner = false;
+
+        if (ptrn.equalsIgnoreCase("0") || ptrn.equalsIgnoreCase("2") ||
+                ptrn.equalsIgnoreCase("6") || ptrn.equalsIgnoreCase("8")
+            ) startsInCorner = true;
+
+        return startsInCorner;
     }
 }
