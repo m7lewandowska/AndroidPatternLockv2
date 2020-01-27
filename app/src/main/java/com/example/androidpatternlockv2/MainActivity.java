@@ -155,5 +155,12 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
         return letter;
     }
 
-    
+    public boolean ChechForL(String ptrn){
+        boolean letter = false;
+        if(ptrn.equalsIgnoreCase("03678"))
+        {
+            letter = true;
+        }
+        return letter;
+    }
 }
