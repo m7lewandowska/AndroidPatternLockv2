@@ -3,6 +3,8 @@ package com.example.androidpatternlockv2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.andrognito.patternlockview.PatternLockView;
@@ -14,6 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements PatternLockViewListener {
 
     PatternLockView patternLockView;
+    int points = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +27,13 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
         patternLockView = (PatternLockView)findViewById(R.id.pattern_lock_view);
 
         patternLockView.addPatternLockListener(this);
+
+
     }
 
     @Override
     public void onStarted() {
+        points=0;
 
     }
 
@@ -49,28 +56,29 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
 //            Toast.makeText(this, "Pattern is not correct!", Toast.LENGTH_SHORT).show();
 //        }
         String ptrn = PatternLockUtils.patternToString(patternLockView, pattern);
-        int points = 0;
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()<2)
         {
             Toast.makeText(this, "Pattern is too short!", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        if(PatternLockUtils.patternToString(patternLockView, pattern).length()!=3 && PatternLockUtils.patternToString(patternLockView, pattern).length()!=4)
-        {
-            Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
-        }
+//        if(PatternLockUtils.patternToString(patternLockView, pattern).length()!=3 && PatternLockUtils.patternToString(patternLockView, pattern).length()!=4)
+//        {
+//            Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("0")) {
-            points++;
+            points+=2;
         }
 
         if(StartsInCorner(ptrn)==true)
         {
-            points++;
+            points+=2;
         }
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()<8){
-            points++;
+            points+=2;
             if(PatternLockUtils.patternToString(patternLockView, pattern).length()<4){
                 points +=2;
             }
@@ -78,26 +86,29 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()==7) {
             if(ChechForM(ptrn)==true){
-                points++;
+                points+=2;
             }
             else if(ChechForC(ptrn)==true)
             {
-                points++;
+                points+=2;
             }
             else if(ChechForN(ptrn)==true){
-                points++;
+                points+=2;
             }
         }
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()==9) {
             if(ChechForS(ptrn)==true){
-                points++;
+                points+=2;
+            }
+            else if(ChechForZ(ptrn)==true){
+                points+=2;
             }
         }
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()==5) {
             if(ChechForL(ptrn)==true){
-                points++;
+                points+=2;
             }
         }
 
@@ -122,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
 
     @Override
     public void onCleared() {
+        points = 0;
 
     }
 
@@ -165,6 +177,15 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
     public boolean ChechForS(String ptrn){
         boolean letter = false;
         if(ptrn.equalsIgnoreCase("210345876"))
+        {
+            letter = true;
+        }
+        return letter;
+    }
+
+    public boolean ChechForZ(String ptrn){
+        boolean letter = false;
+        if(ptrn.equalsIgnoreCase("012543678"))
         {
             letter = true;
         }
