@@ -114,17 +114,21 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
 
         if (points <= 1)
         {
+            patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
             Toast.makeText(this, "STRONG PASSWORD", Toast.LENGTH_SHORT).show();
 
         }
 
         else if (points <= 3)
         {
+            patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
             Toast.makeText(this, "GOOD PASSWORD", Toast.LENGTH_SHORT).show();
 
         }
         else
         {
+
+            patternLockView.setViewMode(PatternLockView.PatternViewMode.WRONG);
             Toast.makeText(this, "WEAK PASSWORD", Toast.LENGTH_SHORT).show();
 
         }
