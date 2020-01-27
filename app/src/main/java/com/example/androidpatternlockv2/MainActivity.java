@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
 //        }
         String ptrn = PatternLockUtils.patternToString(patternLockView, pattern);
         int points = 0;
-        StartsInCorner(ptrn);
 
         if(PatternLockUtils.patternToString(patternLockView, pattern).length()<2)
         {
@@ -62,6 +61,28 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
             Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
         }
 
+        if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("0")) {
+            points++;
+        }
+
+        if(StartsInCorner(ptrn)==true)
+        {
+            points++;
+        }
+        if(PatternLockUtils.patternToString(patternLockView, pattern).length()<8){
+            points++;
+            if(PatternLockUtils.patternToString(patternLockView, pattern).length()<4){
+                points +=2;
+            }
+        }
+
+        if(PatternLockUtils.patternToString(patternLockView, pattern).length()==7) {
+
+
+        }
+
+
+        // M PATTERN
         else if(PatternLockUtils.patternToString(patternLockView, pattern).equalsIgnoreCase("6304258")) {
 //
             patternLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT);
@@ -86,5 +107,14 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
             ) startsInCorner = true;
 
         return startsInCorner;
+    }
+
+    public boolean ChechForM(String ptrn){
+        boolean letter = false;
+        if(ptrn.equalsIgnoreCase("6304258"))
+        {
+            letter = true;
+        }
+        return letter;
     }
 }
