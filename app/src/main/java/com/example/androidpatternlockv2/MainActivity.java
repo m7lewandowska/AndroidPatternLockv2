@@ -18,23 +18,19 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
     PatternLockView patternLockView;
     int points = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         patternLockView = (PatternLockView)findViewById(R.id.pattern_lock_view);
-
         patternLockView.addPatternLockListener(this);
-
 
     }
 
     @Override
     public void onStarted() {
         points=0;
-
     }
 
     @Override
@@ -127,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
         }
         else
         {
-
             patternLockView.setViewMode(PatternLockView.PatternViewMode.WRONG);
             Toast.makeText(this, "WEAK PASSWORD", Toast.LENGTH_SHORT).show();
 
@@ -138,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements PatternLockViewLi
     @Override
     public void onCleared() {
         points = 0;
-
     }
 
     public boolean StartsInCorner(String ptrn){
